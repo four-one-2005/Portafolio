@@ -8,12 +8,10 @@
 [build]
   publish = "."
 
-# ── Redirect HTTP → HTTPS (por si acaso) ─────────────────────────
-[[redirects]]
-  from   = "http://samirolivaperez.netlify.app/*"
-  to     = "https://samirolivaperez.netlify.app/:splat"
-  status = 301
-  force  = true
+# ── HTTPS forzado ────────────────────────────────────────────────
+# El redirect HTTP → HTTPS se gestiona desde el panel de Netlify:
+# Site Settings → Domain Management → HTTPS → Force HTTPS ✅
+# (No se define aquí para que los headers de seguridad apliquen correctamente)
 
 # ══════════════════════════════════════════════════════════════════
 # CABECERAS DE SEGURIDAD HTTP
