@@ -1,0 +1,85 @@
+# ══════════════════════════════════════════════════════════════════
+# netlify.toml — Configuración de Seguridad para Samir Oliva Portafolio
+# Generado por: Senior QA & Security Audit (Antigravity AI)
+# Fecha: 2026-06-21
+# ══════════════════════════════════════════════════════════════════
+
+# ── Build Settings ──────────────────────────────────────────────
+[build]
+  publish = "."
+
+# ── Redirect HTTP → HTTPS (por si acaso) ─────────────────────────
+[[redirects]]
+  from   = "http://samirolivaperez.netlify.app/*"
+  to     = "https://samirolivaperez.netlify.app/:splat"
+  status = 301
+  force  = true
+
+# ══════════════════════════════════════════════════════════════════
+# CABECERAS DE SEGURIDAD HTTP
+# Aplicadas a TODAS las rutas del sitio
+# ══════════════════════════════════════════════════════════════════
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+
+    # ── 1. Content-Security-Policy (CSP) ──────────────────────────
+    # CRÍTICO: Lista blanca de orígenes autorizados para cada tipo de recurso.
+    # Evita XSS, clickjacking y ataques de supply chain en CDNs.
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src  'self'
+                  'unsafe-inline'
+                  https://unpkg.com
+                  https://cdn.jsdelivr.net;
+      style-src   'self'
+                  'unsafe-inline'
+                  https://fonts.googleapis.com
+                  https://unpkg.com
+                  https://cdn.jsdelivr.net;
+      font-src    'self'
+                  https://fonts.gstatic.com
+                  https://unpkg.com
+                  https://cdn.jsdelivr.net;
+      img-src     'self'
+                  data:
+                  https://cdn.jsdelivr.net;
+      connect-src 'self';
+      frame-src   'none';
+      object-src  'none';
+      base-uri    'self';
+      form-action 'self';
+    """
+
+    # ── 2. X-Frame-Options ────────────────────────────────────────
+    # Previene Clickjacking. Tu sitio NO puede ser embebido en un <iframe>.
+    X-Frame-Options = "DENY"
+
+    # ── 3. X-Content-Type-Options ─────────────────────────────────
+    # Evita que el navegador "adivine" el tipo MIME de un archivo.
+    # Previene ataques de MIME sniffing.
+    X-Content-Type-Options = "nosniff"
+
+    # ── 4. Referrer-Policy ────────────────────────────────────────
+    # Cuando un usuario hace clic en LinkedIn/GitHub desde tu portafolio,
+    # solo se envía el origen (dominio) como referrer, no la URL completa.
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # ── 5. Permissions-Policy ─────────────────────────────────────
+    # Deshabilita explícitamente APIs del navegador que tu sitio no necesita.
+    # Un script de terceros (CDN comprometido) no podrá acceder a cámara, micrófono, etc.
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+
+    # ── 6. Strict-Transport-Security (HSTS) ───────────────────────
+    # Fuerza HTTPS por 1 año (31536000 segundos). Netlify ya lo añade,
+    # pero lo declaramos explícitamente para reforzarlo.
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+    # ── 7. Cross-Origin-Opener-Policy ────────────────────────────
+    # Aísla el contexto de navegación. Previene ataques Spectre-based.
+    Cross-Origin-Opener-Policy = "same-origin"
+
+    # ── 8. Cross-Origin-Resource-Policy ──────────────────────────
+    # Solo permite que el mismo origen cargue tus recursos.
+    Cross-Origin-Resource-Policy = "same-origin"
