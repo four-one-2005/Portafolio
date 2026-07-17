@@ -1,6 +1,6 @@
 # 📘 Documentación Técnica — Portafolio Web Samir Oliva
 
-Esta es la documentación técnica oficial del desarrollo, diseño y optimización del portafolio personal de **Samir Oliva Pérez**. 
+Esta es la documentación técnica oficial del desarrollo, diseño y optimización del portafolio personal de **Samir Oliva Perez**. 
 
 El sitio ha sido refactorizado desde cero aplicando estándares profesionales de desarrollo frontend con el objetivo de garantizar una experiencia de usuario (UX) excepcional, una accesibilidad de nivel AA (WCAG), optimización SEO avanzada y un blindaje de seguridad completo.
 

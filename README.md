@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 Samir Oliva Pérez — Portafolio Web
+# 🚀 Samir Oliva Perez — Portafolio Web
 
 **Desarrollador Backend · Estudiante de Ingeniería de Sistemas · Bolivia**
 
@@ -116,5 +116,5 @@ portafolio/
 ---
 
 <div align="center">
-  <sub>© 2026 Samir Oliva Pérez · Santa Cruz, Bolivia</sub>
+  <sub>© 2026 Samir Oliva Perez · Santa Cruz, Bolivia</sub>
 </div>
