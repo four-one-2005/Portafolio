@@ -361,12 +361,12 @@ main {
 
 /* General Section Styles */
 .section {
-    padding: 100px 0;
+    padding: 60px 0;
 }
 
 .section-title {
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
@@ -486,8 +486,9 @@ main {
 /* Proyectos (Projects) */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 420px));
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 900px;
+    margin: 0 auto;
     gap: 1.5rem;
 }
 
@@ -497,6 +498,9 @@ main {
     flex-direction: column;
     gap: 1.2rem;
     border-radius: 20px;
+    max-width: 430px;
+    width: 100%;
+    justify-self: center;
 }
 
 .project-card:hover {
