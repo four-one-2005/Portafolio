@@ -314,6 +314,13 @@ main {
     transform: translateY(-2px);
 }
 
+.btn-sm {
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    flex: 1;
+}
+
 /* Glass Card Global Styles */
 .glass-card {
     background: var(--glass-bg);
